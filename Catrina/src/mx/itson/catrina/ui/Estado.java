@@ -39,7 +39,7 @@ public class Estado extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInfo = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblContable = new javax.swing.JTable();
+        tblCuenta = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -61,7 +61,7 @@ public class Estado extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblInfo);
 
-        tblContable.setModel(new javax.swing.table.DefaultTableModel(
+        tblCuenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -72,7 +72,7 @@ public class Estado extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tblContable);
+        jScrollPane2.setViewportView(tblCuenta);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,8 +170,7 @@ public class Estado extends javax.swing.JFrame {
                 Cuenta cuenta = new Cuenta().deserializar(contenido);
 
                 DefaultTableModel modelInfo = (DefaultTableModel) tblInfo.getModel();
-                DefaultTableModel modelContable = (DefaultTableModel) tblContable.getModel();
-                
+                DefaultTableModel modelCuenta = (DefaultTableModel) tblCuenta.getModel();
                 DefaultTableModel modelPrincipal = (DefaultTableModel) tblPrincipal.getModel();
                 
                 for (Movimiento m : cuenta.getMovimientos()) {
@@ -199,7 +198,7 @@ public class Estado extends javax.swing.JFrame {
                 }
 
                 for (Object o : cuenta.getLista()) {
-                    modelContable.addRow(new Object[]{o});
+                    modelCuenta.addRow(new Object[]{o});
                 }
 
                 System.out.println(cuenta.suma(cuenta.getMovimientos()));
@@ -253,7 +252,7 @@ public class Estado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable tblContable;
+    private javax.swing.JTable tblCuenta;
     private javax.swing.JTable tblInfo;
     private javax.swing.JTable tblPrincipal;
     // End of variables declaration//GEN-END:variables
