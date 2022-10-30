@@ -41,7 +41,7 @@ public class Estado extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCuenta = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblPedido = new javax.swing.JTable();
+        tblPeriodo = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblPrincipal = new javax.swing.JTable();
         btnBuscar = new javax.swing.JToggleButton();
@@ -70,7 +70,7 @@ public class Estado extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblCuenta);
 
-        tblPedido.setModel(new javax.swing.table.DefaultTableModel(
+        tblPeriodo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -78,7 +78,7 @@ public class Estado extends javax.swing.JFrame {
                 "RESUMEN DEL PERIODO"
             }
         ));
-        jScrollPane3.setViewportView(tblPedido);
+        jScrollPane3.setViewportView(tblPeriodo);
 
         tblPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,7 +170,7 @@ public class Estado extends javax.swing.JFrame {
                 DefaultTableModel modelUsuario = (DefaultTableModel) tblUsuario.getModel();
                 DefaultTableModel modelCuenta = (DefaultTableModel) tblCuenta.getModel();
                 DefaultTableModel modelPrincipal = (DefaultTableModel) tblPrincipal.getModel();
-                
+                DefaultTableModel modelPeriodo = (DefaultTableModel) tblPeriodo.getModel();
                 for (Movimiento m : cuenta.getMovimientos()) {
                     if(m.getTipo() == Tipo.DEPOSITO) {
                         modelPrincipal.addRow(new Object[] {
@@ -187,6 +187,11 @@ public class Estado extends javax.swing.JFrame {
                             " ",
                             m.getCantidad(), 
                             " "
+                        });
+                    }
+                    if(m.getTipo()== Tipo.DEPOSITO){
+                        modelPeriodo.addRow(new Object[] {
+                           
                         });
                     }
                 }
@@ -252,7 +257,7 @@ public class Estado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tblCuenta;
-    private javax.swing.JTable tblPedido;
+    private javax.swing.JTable tblPeriodo;
     private javax.swing.JTable tblPrincipal;
     private javax.swing.JTable tblUsuario;
     // End of variables declaration//GEN-END:variables
