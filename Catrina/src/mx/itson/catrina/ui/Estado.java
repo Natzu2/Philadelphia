@@ -37,7 +37,7 @@ public class Estado extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblInfo = new javax.swing.JTable();
+        tblUsuario = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCuenta = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -48,7 +48,7 @@ public class Estado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tblInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -59,7 +59,7 @@ public class Estado extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblInfo);
+        jScrollPane1.setViewportView(tblUsuario);
 
         tblCuenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -169,7 +169,7 @@ public class Estado extends javax.swing.JFrame {
 
                 Cuenta cuenta = new Cuenta().deserializar(contenido);
 
-                DefaultTableModel modelInfo = (DefaultTableModel) tblInfo.getModel();
+                DefaultTableModel modelUsuario = (DefaultTableModel) tblUsuario.getModel();
                 DefaultTableModel modelCuenta = (DefaultTableModel) tblCuenta.getModel();
                 DefaultTableModel modelPrincipal = (DefaultTableModel) tblPrincipal.getModel();
                 
@@ -179,22 +179,20 @@ public class Estado extends javax.swing.JFrame {
                             m.getFecha(),
                             m.getDescripcion(),
                             m.getCantidad(),
-                            " ",
-                            " "
+                          
                         });
                     } else if (m.getTipo() == Tipo.RETIRO) {
                         modelPrincipal.addRow(new Object[] {
                             m.getFecha(),
                             m.getDescripcion(),
-                            " ",
                             m.getCantidad(), 
-                            " "
+                            
                         });
                     }
                 }
 
                 for (Object o : cuenta.getCliente().getLista()) {
-                    modelInfo.addRow(new Object[]{o});
+                    modelUsuario.addRow(new Object[]{o});
                 }
 
                 for (Object o : cuenta.getLista()) {
@@ -253,7 +251,7 @@ public class Estado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable tblCuenta;
-    private javax.swing.JTable tblInfo;
     private javax.swing.JTable tblPrincipal;
+    private javax.swing.JTable tblUsuario;
     // End of variables declaration//GEN-END:variables
 }
