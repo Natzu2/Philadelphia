@@ -8,7 +8,7 @@ package mx.itson.catrina.enumeradores;
 import com.google.gson.annotations.SerializedName;
 
 /**
- *
+ * Almacena los numeradores que corresponden al Tipo de movimiento
  * @author Sisti
  */
 public enum Tipo {

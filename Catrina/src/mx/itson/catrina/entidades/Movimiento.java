@@ -9,7 +9,7 @@ import java.util.Date;
 import mx.itson.catrina.enumeradores.Tipo;
 
 /**
- *
+ * Almacena los datos del Movimiento
  * @author Sisti
  */
 public class Movimiento {
@@ -18,6 +18,10 @@ public class Movimiento {
     private double cantidad;
     private Tipo tipo;
 
+    
+    
+    
+    
     /**
      * @return the fecha
      */

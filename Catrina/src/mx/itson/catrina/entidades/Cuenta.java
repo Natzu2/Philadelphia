@@ -10,7 +10,7 @@ import java.util.List;
 import mx.itson.catrina.enumeradores.Tipo;
 
 /**
- *
+ * Almacena todos los datos del Estado de Cuenta
  * @author Sisti
  */
 public class Cuenta {
@@ -20,22 +20,31 @@ public class Cuenta {
     private String moneda;
     private Cliente cliente;
     private List<Movimiento> movimientos;
-
+    /**
+     * 
+     * @param json
+     * @return cuenta
+     */
     public Cuenta deserializar(String json) {
         Cuenta cuenta = new Cuenta();
 
         try {
             cuenta = new Gson().fromJson(json, Cuenta.class);
         } catch (Exception e) {
-            System.err.println("Errore: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
 
         return cuenta;
     }
     
-    public double sumaDeposito(List<Movimiento> listaMovimientos){
+    /**
+     * 
+     * @param listaMovimientos
+     * @return Total de los depositos
+     */
+    
+    public double getSumaDeposito(List<Movimiento> listaMovimientos){
         double totalDeposito = 0;
-        
        for(Movimiento m : listaMovimientos){
             if(m.getTipo() == Tipo.DEPOSITO) {
                 totalDeposito += m.getCantidad();
@@ -44,7 +53,12 @@ public class Cuenta {
         return totalDeposito;
     }
     
-   public double sumaRetiro(List<Movimiento> listaMovimientos) {
+    /**
+     * 
+     * @param listaMovimientos
+     * @return Total de los retiros
+     */
+   public double getSumaRetiro(List<Movimiento> listaMovimientos) {
         double totalRetiro = 0;
         
         for(Movimiento m : listaMovimientos) {
@@ -54,7 +68,21 @@ public class Cuenta {
         }
         return totalRetiro;
    }
-
+   
+   /**
+    * 
+    * @param suma
+    * @return Saldo final del pedido
+    */
+    public double getTotal(Movimiento suma) {
+        double total = getSumaDeposito(movimientos) - getSumaRetiro(movimientos);
+        return total;
+    }
+    
+    /**
+     * 
+     * @return Cuenta, Clabe bancaria y moneda en forma de lista
+     */
     public Object[] getLista() {
         Object[] lista = {
             "Cuenta: " + getCuenta(),
@@ -64,10 +92,27 @@ public class Cuenta {
         return lista;
     }
     
-    public double suma(Movimiento suma) {
-        double resultado = sumaDeposito(movimientos) - sumaRetiro(movimientos);
-        return resultado;
+    /**
+     * 
+     * @param mes
+     * @return El saldo inicial (Suma del total de los meses anteriores)
+     */
+    public double getSaldoInicial(int mes) {
+        double saldoInicial = 0;
+        
+        for (Movimiento m : this.movimientos) {
+            for (int i = 0; i < mes; i++) {
+                if (m.getFecha().getMonth() == i && m.getTipo() == Tipo.DEPOSITO) {
+                    saldoInicial += m.getCantidad();
+                }else if (m.getFecha().getMonth() == i && m.getTipo() == Tipo.RETIRO) {
+                    saldoInicial -= m.getCantidad();
+                }
+            }
+        }
+        return saldoInicial;
     }
+    
+   
 
     /**
      * @return the producto
