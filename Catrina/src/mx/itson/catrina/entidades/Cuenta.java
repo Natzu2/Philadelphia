@@ -32,7 +32,7 @@ public class Cuenta {
         return cuenta;
     }
     
-    public double operacion(List<Movimiento> listaMovimientos){
+    public double sumaDeposito(List<Movimiento> listaMovimientos){
         double resultado = 0;
         
        for(Movimiento m : listaMovimientos){
