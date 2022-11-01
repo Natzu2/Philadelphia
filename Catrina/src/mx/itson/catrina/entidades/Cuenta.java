@@ -7,6 +7,7 @@ package mx.itson.catrina.entidades;
 
 import com.google.gson.Gson;
 import java.util.List;
+import mx.itson.catrina.enumeradores.Tipo;
 
 /**
  *
@@ -33,20 +34,26 @@ public class Cuenta {
     }
     
     public double sumaDeposito(List<Movimiento> listaMovimientos){
-        double resultado = 0;
+        double totalDeposito = 0;
         
        for(Movimiento m : listaMovimientos){
-            switch (m.getTipo()) {
-                case DEPOSITO:
-                        resultado += m.getCantidad();
-                case RETIRO:
-                        resultado -= m.getCantidad();
-               
+            if(m.getTipo() == Tipo.DEPOSITO) {
+                totalDeposito += m.getCantidad();
             }
         }
-        
-        return resultado;
+        return totalDeposito;
     }
+    
+   public double sumaRetiro(List<Movimiento> listaMovimientos) {
+        double totalRetiro = 0;
+        
+        for(Movimiento m : listaMovimientos) {
+            if(m.getTipo() == Tipo.RETIRO) {
+                totalRetiro += m.getCantidad();
+            }
+        }
+        return totalRetiro;
+   }
 
     public Object[] getLista() {
         Object[] lista = {
@@ -54,9 +61,12 @@ public class Cuenta {
             "Clabe: " + getClabe(),
             "Moneda: " + getMoneda()
         };
-        
-  
         return lista;
+    }
+    
+    public double suma(Movimiento suma) {
+        double resultado = sumaDeposito(movimientos) - sumaRetiro(movimientos);
+        return resultado;
     }
 
     /**
