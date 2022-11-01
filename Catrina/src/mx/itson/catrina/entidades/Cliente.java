@@ -6,7 +6,7 @@
 package mx.itson.catrina.entidades;
 
 /**
- *
+ * Almacena los datos del Cliente
  * @author Sisti
  */
 public class Cliente {
@@ -17,6 +17,10 @@ public class Cliente {
     private String rfc;
     private String cp;
 
+    /**
+     * 
+     * @return Nombre, RFC, Domicilio, Ciudad y Codigo Postal en forma de Lista
+     */
     public Object[] getLista() {
         Object[] lista = {
             "Nombre: " + getNombre(),
