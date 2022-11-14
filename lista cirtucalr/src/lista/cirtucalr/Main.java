@@ -37,6 +37,7 @@ public class Main {
         cl.add(18);
         cl.add(19);
         cl.add(20);
+        
 
         //Displays all the nodes present in the list  
         cl.display();  
