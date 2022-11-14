@@ -28,6 +28,16 @@ public class Main {
         cl.add(9);
         cl.add(10);
         cl.add(11);
+        cl.add(12);
+        cl.add(13);
+        cl.add(14);
+        cl.add(15);
+        cl.add(16);
+        cl.add(17);
+        cl.add(18);
+        cl.add(19);
+        cl.add(20);
+
         //Displays all the nodes present in the list  
         cl.display();  
     }  
